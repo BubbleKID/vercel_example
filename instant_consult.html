@@ -1,0 +1,681 @@
+<!-- Custom Fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Layout Overrides -->
+
+<style>
+  .promotion-strip--mobile,
+  .promotion-strip--desktop {
+    display: none !important;
+  }
+
+  @media (min-width: 880px) {
+    #Left-Content {
+      width: 880px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    document.getElementById('Right-Content').setAttribute('hidden', '');
+  })();
+</script>
+
+<!-- Instant Consult page styles -->
+
+<style>
+  .ic-info {
+    --font-family: Rubik, Arial, Helvetica, sans-serif;
+
+    --color-grey-700: #404040;
+    --color-grey-900: #0e0e0e;
+
+    --color-green-500: #01ad07;
+    --color-green-700: #009605;
+    --color-green-900: #007a04;
+
+    --color-blue-500: #0053a3;
+    --color-blue-700: #00478b;
+    --color-blue-900: #00407e;
+
+    --color-link: #0f68db;
+    --color-link-hover: var(--color-blue-900);
+
+    color: var(--color-grey-700);
+    font-family: var(--font-family);
+  }
+
+  .ic-info * {
+    box-sizing: border-box;
+  }
+
+  .ic-info-header {
+    margin: 8px 0;
+  }
+
+  .ic-info-header>img {
+    max-width: 100%;
+    vertical-align: top;
+  }
+
+  .ic-info-section {
+    background: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 35px 23px;
+  }
+
+  .ic-info-section h1,
+  .ic-info-section h2 {
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: var(--color-grey-900);
+  }
+
+  .ic-info-section p {
+    color: var(--color-grey-700);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .ic-button-solid {
+    padding: 14px 16px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: var(--color-green-500);
+    text-decoration: none;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    transition: background-color 150ms ease-in;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ic-button-solid svg {
+    fill: #fff;
+    margin: 3px;
+  }
+
+  .ic-button-solid:hover,
+  .ic-button-solid:focus-visible {
+    background-color: var(--color-green-700);
+    text-decoration: none;
+  }
+
+  .ic-button-solid:active {
+    background-color: var(--color-green-900);
+  }
+
+  .ic-button-outline {
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 7px 15px;
+    border: 1px solid;
+    color: var(--color-blue-500);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 150ms ease-in, color 150ms ease-in, border 150ms ease-in;
+  }
+
+  .ic-button-outline svg {
+    fill: var(--color-blue-500);
+    transition: fill 150ms ease-in;
+    margin: 3px;
+  }
+
+  .ic-button-outline:hover,
+  .ic-button-outline:focus-visible {
+    text-decoration: none;
+    background: var(--color-blue-700);
+    border-color: var(--color-blue-700);
+    color: #fff;
+  }
+
+  .ic-button-outline:active {
+    background: var(--color-blue-900);
+    border-color: var(--color-blue-900);
+  }
+
+  .ic-button-outline:hover svg,
+  .ic-button-outline:focus-visible svg,
+  .ic-button-outline:active svg {
+    fill: #fff;
+  }
+
+  .ic-info-grid {
+    display: grid;
+    row-gap: 8px;
+  }
+
+  .ic-info-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ic-info-list li {
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+
+    align-items: center;
+    gap: 8px;
+  }
+
+  ul.ic-info-list {
+    gap: 24px;
+  }
+
+  ul.ic-info-list li::before {
+    content: '';
+    width: 32px;
+    height: 24px;
+    background: url('https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/marker-ul.svg') no-repeat;
+    background-size: cover;
+    flex: 0 0 auto;
+  }
+
+  ol.ic-info-list {
+    counter-reset: ol-list-counter 0;
+    padding: 0;
+    margin: 0;
+    gap: 32px;
+  }
+
+  ol.ic-info-list li {
+    gap: 16px;
+    counter-increment: ol-list-counter 1;
+  }
+
+  ol.ic-info-list li::before {
+    content: counter(ol-list-counter);
+    background: url('https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/marker-ol.svg') no-repeat 0 0;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: bold;
+    padding: 7px 0 0 8px;
+    color: var(--color-grey-900);
+  }
+
+  .ic-info-list li strong {
+    font-weight: bold;
+    display: inline;
+  }
+
+  .ic-desktop-only,
+  .ic-desktop-only--inline {
+    display: none;
+  }
+
+  .ic-info-app-stores {
+    display: flex;
+    max-width: 330px;
+    justify-content: space-between;
+    margin: 24px 0 36px;
+  }
+
+  .ic-info-app-stores img {
+    vertical-align: top;
+  }
+
+  .ic-info-section-columns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ic-info-section-copy p {
+    margin: 0 0 1em;
+  }
+
+  .ic-info-section-copy a {
+    font-size: inherit;
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+
+  .ic-info-section-copy a:hover {
+    text-decoration: none;
+    color: var(--color-link-hover);
+  }
+
+  .ic-info-section-copy :last-child {
+    margin-bottom: 0;
+  }
+
+  .ic-info-section__what-is-ic .ic-button-solid {
+    margin-top: 16px;
+  }
+
+  .ic-info-footnotes {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 32px 0 0;
+  }
+
+  .ic-info-section__how-it-works h2 {
+    margin-bottom: 24px;
+  }
+
+  .ic-info-section__our-doctors h2 {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .ic-info-section__our-doctors h2::before {
+    content: '';
+    width: 105px;
+    height: 48px;
+    background: url('https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/ahpra-logo.png') no-repeat;
+    background-size: contain;
+  }
+
+  .ic-info-section__speak-to-doctor .ic-info-app-stores {
+    margin: 24px 0 0;
+  }
+
+  .ic-info-faq-footer {
+    margin-top: 24px;
+  }
+
+  .ic-faq {
+    margin: 24px 0;
+  }
+
+  .ic-faq details {
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .ic-faq details:first-child {
+    border-top: 1px solid #ebebeb;
+  }
+
+  .ic-faq summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 6px 24px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: var(--color-grey-900);
+    font-weight: bold;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    background: none;
+    text-align: left;
+    transition: color 150ms ease-in;
+    gap: 60px;
+  }
+
+  .ic-faq summary::-webkit-details-marker,
+  .ic-faq summary::marker {
+    display: none;
+  }
+
+  .ic-faq summary svg {
+    transition: transform 150ms ease-in, fill 150ms ease-in;
+    flex: 0 0 auto;
+  }
+
+  .ic-faq details[open] summary {
+    color: #09529f;
+    padding-bottom: 16px;
+  }
+
+  .ic-faq details[open] summary svg {
+    transform: rotate(180deg);
+    fill: #09529f;
+  }
+
+  .ic-faq__answer {
+    padding-bottom: 24px;
+  }
+
+  .ic-faq__answer p {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0 1em;
+  }
+
+  .ic-faq__answer :last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 880px) {
+    .ic-info-header {
+      margin: 0 0 12px;
+    }
+
+    .ic-info-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .ic-info-section {
+      grid-column: 1 / 3;
+      padding: 35px;
+    }
+
+    .ic-info-section__how-it-works {
+      grid-column: 1 / 2;
+    }
+
+    .ic-info-section__our-doctors {
+      grid-column: 2 / 3;
+    }
+
+    .ic-mobile-only {
+      display: none;
+    }
+
+    .ic-desktop-only {
+      display: block;
+    }
+
+    .ic-desktop-only--inline {
+      display: inline;
+    }
+
+    .ic-info-section-columns {
+      flex-direction: row;
+      gap: 48px;
+    }
+
+    .ic-info-section-columns__column:first-child {
+      flex: 0 0 460px;
+    }
+
+    .ic-info-section__what-is-ic .ic-info-section-copy {
+      margin-top: 8px;
+    }
+
+    .ic-info-section__how-it-works .ic-info-list {
+      max-width: 320px;
+    }
+
+    .ic-info-section__our-doctors h2 {
+      margin-bottom: 12px;
+    }
+
+    .ic-info-section__speak-to-doctor {
+      text-align: center;
+    }
+
+    .ic-info-section__speak-to-doctor .ic-info-section-copy {
+      max-width: 600px;
+      margin: 16px auto;
+    }
+
+    .ic-info-section__faq h2 {
+      margin-bottom: 16px;
+    }
+
+    .ic-info-faq-footer {
+      margin-top: 16px;
+    }
+
+    .ic-faq {
+      margin: 16px 0;
+    }
+
+    .ic-info-section__faq-note {
+      width: 90%;
+    }
+  }
+</style>
+
+<section class="ic-info">
+  <header class="ic-info-header">
+    <img
+      src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/ic-header-mobile-promo-mar-2023.png"
+      class="ic-info-banner ic-mobile-only" />
+    <img
+      src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/ic-header-desktop-promo-mar-2023.png"
+      class="ic-info-banner ic-desktop-only" />
+  </header>
+
+  <div class="ic-info-grid">
+    <div class="ic-info-section ic-info-section__what-is-ic">
+      <h1>What is Instant Consult</h1>
+
+      <div class="ic-info-section-columns">
+        <div class="ic-info-section-columns__column">
+          <div class="ic-info-section-copy">
+            <p>
+              With Instant Consult you can see an Australian Registered GP through video call, from
+              anywhere in Australia.
+            </p>
+            <p>
+              Instant Consult is open from open 7 days a week from 6AM until midnight (AEST) and no
+              bookings are required.
+            </p>
+
+            <p class="ic-mobile-only">
+              Download the app and use Instant Consult when you need a prescription or to speak to a
+              doctor now!
+            </p>
+            <p class="ic-desktop-only">
+              Use Instant Consult when you need a prescription or to speak to a doctor now!
+            </p>
+          </div>
+
+          <div class="ic-desktop-only">
+            <a href="https://onelink.to/hdsweq" class="ic-button-solid ic-button-solid--arrow" target="_blank"
+              rel="noopener">
+              Get Started
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 .333 5.827 1.508l4.65 4.659H.334v1.666h10.142l-4.65 4.659L7 13.667 13.667 7 7.001.333Z" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="ic-info-app-stores ic-mobile-only">
+            <a href="https://onelink.to/hdsweq" target="_blank" rel="noopener"><img
+                src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/app-store-button.svg"
+                alt="Download on the App Store" /></a>
+            <a href="https://onelink.to/hdsweq" target="_blank" rel="noopener"><img height="48"
+                src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/google-play-button.png"
+                alt="Get it on Google Play" /></a>
+          </div>
+        </div>
+        <div class="ic-info-section-columns__column">
+          <ul class="ic-info-list">
+            <li>
+              <span>See an Australian Registered GP <strong>in 15 minutes</strong></span>
+            </li>
+            <li>
+              <span><strong>Receive your eScript instantly</strong> via SMS or email</span>
+            </li>
+            <li>
+              <span>Available <strong>365 days a year</strong></span>
+            </li>
+            <li>
+              <span><strong>No extra charge</strong> for out of hours appointments</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ic-info-section ic-info-section__how-it-works">
+      <h2>How it Works</h2>
+
+      <ol class="ic-info-list">
+        <li>
+          <span class="ic-mobile-only">Download the Instant Consult app</span>
+          <span class="ic-desktop-only">Sign up or login on the Instant Consult website or app</span>
+        </li>
+        <li>Request a consult</li>
+        <li>Consult with a doctor through video call and receive your eScript ^</li>
+        <li>Order your medication online or visit your nearest Chemist Warehouse pharmacy *</li>
+      </ol>
+
+      <div class="ic-info-footnotes">
+        * You have the choice to fill your script at any pharmacy <br />
+        ^ If deemed clinically appropriate
+      </div>
+    </div>
+    <div class="ic-info-section ic-info-section__our-doctors">
+      <h2>Our Doctors</h2>
+
+      <div class="ic-info-section-copy">
+        <p>
+          All our online Doctors are fully qualified and are registered with the Australian Health
+          Practitioner Regulation Agency (AHPRA), as required by the Medical Board of Australia.
+        </p>
+        <p>
+          All Doctors on Instant Consult are General Practitioners - fellows of the RACGP and ACRRM;
+          <strong>the highest qualification obtained as a GP in Australia.</strong>
+        </p>
+      </div>
+    </div>
+    <div class="ic-info-section ic-info-section__faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="ic-info-section-columns">
+        <div class="ic-info-section-columns__column">
+          <div class="ic-info-section-copy">
+            <p>Here you will find some frequently asked questions about Instant Consult.</p>
+          </div>
+
+          <div class="ic-faq">
+            <details>
+              <summary>
+                What is Instant Consult
+                <svg width="12" height="8" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.41.551 6 5.131l4.59-4.58L12 1.961l-6 6-6-6L1.41.551Z" />
+                </svg>
+              </summary>
+              <div class="ic-faq__answer">
+                <p>
+                  Instant Consult provides you with the ability to have a health consultation with
+                  an Australian registered, fully qualified and experienced Doctor via video call,
+                  anywhere in Australia.
+                </p>
+                <p>
+                  They provide a platform for affordable consultations from the comfort of your home
+                  or wherever you are. No need to book an appointment - simply “Request a Consult”
+                  and the first available Doctor will connect with you instantly, usually in less
+                  than 15 minutes. If you would prefer, you can also book an appointment time for
+                  the Doctor to call you back at no extra charge.
+                </p>
+                <p>
+                  Doctors are available to answer your questions 7 days a week 6am-midnight (AEST)
+                </p>
+                <p>
+                  Consultation costs are extremely competitive and do not increase outside normal
+                  office hours or on weekends or public holidays.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                What can I use Instant Consult for?
+                <svg width="12" height="8" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.41.551 6 5.131l4.59-4.58L12 1.961l-6 6-6-6L1.41.551Z" />
+                </svg>
+              </summary>
+              <div class="ic-faq__answer">
+                <p>
+                  Instant Consult doctors can provide prescriptions (including Repeats), specialist
+                  referrals, medical certificates and pathology and radiology requests. You can also
+                  speak to their doctors for just about any general medical issue, including cold
+                  and flu, sore throat, sexual health, diarrhoea, vomiting and more. Suitable
+                  medical consultations can be effectively managed online via video call. Using
+                  Instant Consult takes pressure off medical practices as well as hospital emergency
+                  departments, letting their local doctors and nurses focus on physical examination
+                  and genuine emergency care.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>
+                Should I use Instant Consult in cases of emergency?
+                <svg width="12" height="8" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.41.551 6 5.131l4.59-4.58L12 1.961l-6 6-6-6L1.41.551Z" />
+                </svg>
+              </summary>
+              <div class="ic-faq__answer">
+                <p>
+                  No, if you need emergency medical attention in Australia please dial 000. Examples
+                  of medical emergencies include: chest pain, head or spinal injuries, severe
+                  bleeding, loss of movement, breathing difficulties and reduced level of
+                  consciousness.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="ic-info-section-copy ic-info-section__faq-note">
+            <p>
+              If the information above doesn't answer your query or concern, please feel free to
+              view all Frequently Asked Questions on the Instant Consult website or contact the
+              Instant Consult support team on
+              <a href="mailto:support@instantconsult.com.au">support@instantconsult.com.au</a>.
+            </p>
+          </div>
+
+          <div class="ic-info-faq-footer">
+            <a href="https://www.instantconsult.com.au/faq/" class="ic-button-outline" target="_blank" rel="noopener">
+              <span>
+                <span class="ic-desktop-only--inline">View</span> all Frequently Asked Questions
+              </span>
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 .333 5.827 1.508l4.65 4.659H.334v1.666h10.142l-4.65 4.659L7 13.667 13.667 7 7.001.333Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ic-info-section ic-info-section__speak-to-doctor">
+      <h2>Speak to a Doctor Today</h2>
+
+      <div class="ic-info-section-copy">
+        <p>
+          Instant Consult makes it easy to get access to fully qualified online doctors in Australia
+          at your convenience - no matter where you are in Australia. Our doctors are all Australian
+          Registered GPs, so you know you are in safe, competent hands.
+        </p>
+      </div>
+
+      <div class="ic-desktop-only">
+        <a href="https://onelink.to/hdsweq" class="ic-button-solid ic-button-solid--arrow" target="_blank"
+          rel="noopener">
+          Get Started
+          <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 .333 5.827 1.508l4.65 4.659H.334v1.666h10.142l-4.65 4.659L7 13.667 13.667 7 7.001.333Z" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="ic-info-app-stores ic-mobile-only">
+        <a href="https://onelink.to/hdsweq" target="_blank" rel="noopener"><img
+            src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/app-store-button.svg"
+            alt="Download on the App Store" /></a>
+        <a href="https://onelink.to/hdsweq" target="_blank" rel="noopener"><img height="48"
+            src="https://static.chemistwarehouse.com.au/ams/media/images/instant-consult/google-play-button.png"
+            alt="Get it on Google Play" /></a>
+      </div>
+    </div>
+  </div>
+</section>
